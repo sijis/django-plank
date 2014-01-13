@@ -10,55 +10,55 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Adding model 'Category'
-        db.create_table('board_category', (
+        db.create_table('plank_category', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50, db_index=True)),
             ('description', self.gf('django.db.models.fields.CharField')(max_length=255)),
         ))
-        db.send_create_signal('board', ['Category'])
+        db.send_create_signal('plank', ['Category'])
 
         # Adding field 'Service.category'
-        db.add_column('board_service',
+        db.add_column('plank_service',
                       'category',
                       self.gf('django.db.models.fields.related.ForeignKey')(related_name='services', null=True,
-                                                                            to=orm['board.Category']),
+                                                                            to=orm['plank.Category']),
                       keep_default=False)
 
     def backwards(self, orm):
 
         # Deleting model 'Category'
-        db.delete_table('board_category')
+        db.delete_table('plank_category')
 
         # Deleting field 'Service.category'
-        db.delete_column('board_service', 'category_id')
+        db.delete_column('plank_service', 'category_id')
 
     models = {
-        'board.category': {
+        'plank.category': {
             'Meta': {'ordering': "('name',)", 'object_name': 'Category'},
             'description': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'})
         },
-        'board.event': {
+        'plank.event': {
             'Meta': {'ordering': "('-start',)", 'object_name': 'Event'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'informational': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'message': ('django.db.models.fields.TextField', [], {}),
-            'service': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'events'", 'to': "orm['board.Service']"}),
+            'service': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'events'", 'to': "orm['plank.Service']"}),
             'start': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'status': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'events'", 'to': "orm['board.Status']"})
+            'status': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'events'", 'to': "orm['plank.Status']"})
         },
-        'board.service': {
+        'plank.service': {
             'Meta': {'ordering': "('name',)", 'object_name': 'Service'},
-            'category': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'services'", 'null': 'True', 'to': "orm['board.Category']"}),
+            'category': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'services'", 'null': 'True', 'to': "orm['plank.Category']"}),
             'description': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'})
         },
-        'board.status': {
+        'plank.status': {
             'Meta': {'ordering': "('severity',)", 'object_name': 'Status'},
             'description': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -69,4 +69,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['board']
+    complete_apps = ['plank']

@@ -34,23 +34,23 @@ class Migration(DataMigration):
         "Write your backwards methods here."
 
     models = {
-        'board.event': {
+        'plank.event': {
             'Meta': {'ordering': "('-start',)", 'object_name': 'Event'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'informational': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'message': ('django.db.models.fields.TextField', [], {}),
-            'service': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['board.Service']"}),
+            'service': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['plank.Service']"}),
             'start': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'status': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['board.Status']"})
+            'status': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['plank.Status']"})
         },
-        'board.service': {
+        'plank.service': {
             'Meta': {'ordering': "('name',)", 'object_name': 'Service'},
             'description': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'db_index': 'True'})
         },
-        'board.status': {
+        'plank.status': {
             'Meta': {'object_name': 'Status'},
             'description': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -61,4 +61,4 @@ class Migration(DataMigration):
         }
     }
 
-    complete_apps = ['board']
+    complete_apps = ['plank']

@@ -6,9 +6,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 import calendar
 
 
-class BoardMixin(object):
+class PlankMixin(object):
     def get_context_data(self, **kwargs):
-        context = super(BoardMixin, self).get_context_data(**kwargs)
+        context = super(PlankMixin, self).get_context_data(**kwargs)
         context['statuses'] = Status.objects.all()
         return context
 
@@ -23,7 +23,7 @@ def get_past_days(num):
     return dates
 
 
-class IndexView(BoardMixin, ListView):
+class IndexView(PlankMixin, ListView):
     context_object_name = 'services'
     queryset = Service.objects.all()
     template_name = 'plank/index.html'
@@ -35,7 +35,7 @@ class IndexView(BoardMixin, ListView):
         return context
 
 
-class ServiceView(BoardMixin, DetailView):
+class ServiceView(PlankMixin, DetailView):
     model = Service
     template_name = 'plank/service_detail.html'
 
