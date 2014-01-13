@@ -3,4 +3,4 @@ static_root/
 *.un~
 .*.sw*
 .DS_Store
-whiskerboard.sqlite3
+plank.sqlite3
