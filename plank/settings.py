@@ -7,7 +7,7 @@ PROJECT_ROOT = os.path.dirname(__file__)
 ######################################
 
 DEBUG = True
-ROOT_URLCONF = 'board.urls'
+ROOT_URLCONF = 'plank.urls'
 SITE_ID = 1
 
 # Missing by Default. Add your own unique key.
@@ -26,7 +26,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
-    'board',
+    'plank',
     'tastypie',
 )
 
@@ -46,7 +46,7 @@ DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'whiskerboard.sqlite3',
+        'NAME': 'plank.sqlite3',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -142,5 +142,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
-    'board.context_processors.current_site',
+    'plank.context_processors.current_site',
 )

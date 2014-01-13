@@ -1,6 +1,6 @@
 from tastypie import fields
 from tastypie.resources import ModelResource
-from board.models import Service, Category, Status, Event
+from plank.models import Service, Category, Status, Event
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 from tastypie.authentication import BasicAuthentication
 from tastypie.authorization import DjangoAuthorization

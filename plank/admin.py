@@ -1,5 +1,5 @@
 from django.contrib import admin
-from board.models import Category, Service, Status, Event
+from plank.models import Category, Service, Status, Event
 
 
 class CategoryAdmin(admin.ModelAdmin):

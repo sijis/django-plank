@@ -1,4 +1,4 @@
-from board.models import Service, Status
+from plank.models import Service, Status
 import datetime
 from django.views.generic import ListView, DetailView
 from django.template import RequestContext
@@ -26,7 +26,7 @@ def get_past_days(num):
 class IndexView(BoardMixin, ListView):
     context_object_name = 'services'
     queryset = Service.objects.all()
-    template_name = 'board/index.html'
+    template_name = 'plank/index.html'
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
@@ -37,7 +37,7 @@ class IndexView(BoardMixin, ListView):
 
 class ServiceView(BoardMixin, DetailView):
     model = Service
-    template_name = 'board/service_detail.html'
+    template_name = 'plank/service_detail.html'
 
     def get(self, request, slug=None, year=None, month=None, day=None):
 
