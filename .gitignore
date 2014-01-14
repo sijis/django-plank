@@ -4,3 +4,6 @@ static_root/
 .*.sw*
 .DS_Store
 plank.sqlite3
+build/
+dist/
+django_plank.egg-info/
