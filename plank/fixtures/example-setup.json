@@ -1,0 +1,21 @@
+[
+  {
+    "pk":1,
+    "model":"plank.category",
+    "fields":{
+      "description":"category1 description",
+      "name":"category1",
+      "slug":"category1"
+    }
+  },
+  {
+    "pk":1,
+    "model":"plank.service",
+    "fields":{
+      "category":1,
+      "description":"service1",
+      "name":"service1",
+      "slug":"service1"
+    }
+  }
+]

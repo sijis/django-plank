@@ -1,0 +1,35 @@
+[
+  {
+    "model": "plank.status",
+    "pk": 1,
+    "fields": {
+      "name": "Down",
+      "slug": "down",
+      "description": "The service is currently down",
+      "severity": 40,
+      "image": "cross-circle"
+    }
+  },
+  {
+    "model": "plank.status",
+    "pk": 2,
+    "fields": {
+      "name": "Up",
+      "slug": "up",
+      "description": "The service is up",
+      "severity": 10,
+      "image": "tick-circle"
+    }
+  },
+  {
+    "model": "plank.status",
+    "pk": 3,
+    "fields": {
+      "name": "Warning",
+      "slug": "warning",
+      "description": "The service is experiencing intermittent problems",
+      "severity": 30,
+      "image": "exclamation"
+    }
+  }
+]
