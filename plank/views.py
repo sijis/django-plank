@@ -67,7 +67,7 @@ class ServiceView(PlankMixin, DetailView):
             start_date = datetime.datetime.now() + datetime.timedelta(days=30)
             end_date = datetime.datetime.now()
 
-        events = data.events.filter(start__gte=start_date).filter(start__lt=end_date)
+        events = data.events.filter(start__gte=start_date, start__lt=end_date)
 
         no_events = None
         if len(events) == 0:
