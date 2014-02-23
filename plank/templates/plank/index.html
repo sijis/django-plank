@@ -1,30 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 {% regroup services|dictsort:"category.name" by category as category_list %}
-<div id="webservices" class="frame">
   {% for category in category_list %}
-  <h2 class="category">{{ category.grouper.name }}</h2>
-  <div class="category-desc">
-    {{ category.grouper.description|safe }}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="list-group-item-heading">{{ category.grouper.name }}</h4>
+    <p class="list-group-item-text">{{ category.grouper.description|safe }}</p>
   </div>
-  <table id="service-list">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>Service</th>
-        <th class="today">Current</th>
-        {% for day in past %}
-          <th class="date">{{ day|date:"N d" }}</th>
-        {% endfor %}
+        <th>Latest State</th>
       </tr>
     </thead>
 
-    <tbody id="services-body">
+    <tbody>
     {% for service in category.list %}
+        {% with latest_status=service.events.latest.status %}
       <tr>
         <td><a href="{{ service.get_absolute_url }}{{ service.events.latest.start|date:"/Y/m/d" }}">{{ service.name }}</a></td>
-        <td class="status highlight">
+        <td>
           <a href="{{ service.get_absolute_url }}{{ service.events.latest.start|date:"/Y/m/d" }}">
-            {% with service.events.latest.status as latest_status %}
             {% if latest_status %}
               <img src="{{ STATIC_URL }}images/status/{{ latest_status.image }}.png" alt="{{ latest_status }} "/>
             {% else %}
@@ -33,19 +30,11 @@
             {% endwith %}
           </a>
         </td>
-
-        {% for status in service.last_five_days %}
-        <td class="status">
-          <a href="{{ service.get_absolute_url }}/{{ status.day|date:"Y/m/d" }}">
-            <img src="{{ STATIC_URL }}images/status/{{ status.image }}.png" alt="{{ status.image }}">
-          </a>
-        </td>
-        {% endfor %}
       </tr>
     {% endfor %}              
     </tbody>
   </table>
+</div>
 {% endfor %}
 {% include "plank/_legend.html" %}
-</div>
 {% endblock %}
