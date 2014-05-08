@@ -39,12 +39,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">{{current_site.name}}</a>
+          <a class="navbar-brand" href="{{ SITE_URL }}">{{current_site.name}}</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#about">About</a></li>
-            <li><a href="#feeds">Feeds</a></li>
+            <li><a href="{{ SITE_URL }}/feed">Feed</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
